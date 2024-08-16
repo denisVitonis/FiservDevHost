@@ -56,7 +56,7 @@ namespace xampCaseiro
 
         private void btnStartMySQL_Click(object sender, EventArgs e)
         {
-            StartProcess(txtMySQLPath.Text);
+            StartProcess("mysqld", "--console", txtMySQLPath.Text);
             UpdateServiceStatus();
         }
 
@@ -78,17 +78,34 @@ namespace xampCaseiro
             UpdateServiceStatus();
         }
 
-        private void StartProcess(string path)
+        private void StartProcess(string fileName, string arguments = "", string workingDirectory = "")
         {
             try
             {
-                Process.Start(path);
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = fileName,
+                    Arguments = arguments,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true,
+                };
+
+                if (!string.IsNullOrEmpty(workingDirectory))
+                {
+                    startInfo.WorkingDirectory = workingDirectory;
+                }
+
+                Process process = new Process { StartInfo = startInfo };
+                process.Start();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao iniciar o processo: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void StopProcess(string processName)
         {
