@@ -15,9 +15,9 @@ namespace xampCaseiro
         private void Form1_Load(object sender, EventArgs e)
         {
             // Inicializa os TextBoxes com os caminhos padrão
-            txtApachePath.Text = @"C:\Users\Vitonis\projetos\Apache24\bin\httpd.exe";
-            txtMySQLPath.Text = @"C:\Users\Vitonis\projetos\mysql\bin\mysqld.exe";
-            txtPHPPath.Text = @"C:\Users\Vitonis\projetos\php\php.exe";
+            txtApachePath.Text = @"\httpd.exe";
+            txtMySQLPath.Text = @"\mysqld.exe";
+            txtPHPPath.Text = @"\php.exe";
 
             UpdateServiceStatus();
         }
