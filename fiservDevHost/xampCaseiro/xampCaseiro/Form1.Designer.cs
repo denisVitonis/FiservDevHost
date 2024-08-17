@@ -2,7 +2,7 @@
 {
     partial class Form1
     {
-        private System.ComponentModel.IContainer components = null;
+        //private System.ComponentModel.IContainer components = null;
         private Label lblStatusApache;
         private Label lblStatusMySQL;
         private Label lblStatusPHP;
@@ -22,6 +22,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             lblStatusApache = new Label();
             lblStatusMySQL = new Label();
             lblStatusPHP = new Label();
@@ -39,33 +40,42 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblStatusApache
             // 
             lblStatusApache.AutoSize = true;
-            lblStatusApache.Location = new Point(315, 213);
+            lblStatusApache.Font = new Font("Tahoma", 12F);
+            lblStatusApache.ForeColor = Color.Red;
+            lblStatusApache.Location = new Point(481, 231);
             lblStatusApache.Name = "lblStatusApache";
-            lblStatusApache.Size = new Size(110, 20);
+            lblStatusApache.Size = new Size(150, 24);
             lblStatusApache.TabIndex = 0;
             lblStatusApache.Text = "Status Apache: ";
             // 
             // lblStatusMySQL
             // 
             lblStatusMySQL.AutoSize = true;
-            lblStatusMySQL.Location = new Point(306, 355);
+            lblStatusMySQL.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblStatusMySQL.ForeColor = Color.Red;
+            lblStatusMySQL.Location = new Point(481, 364);
             lblStatusMySQL.Name = "lblStatusMySQL";
-            lblStatusMySQL.Size = new Size(106, 20);
+            lblStatusMySQL.Size = new Size(145, 24);
             lblStatusMySQL.TabIndex = 1;
             lblStatusMySQL.Text = "Status MySQL: ";
             // 
             // lblStatusPHP
             // 
             lblStatusPHP.AutoSize = true;
-            lblStatusPHP.Location = new Point(306, 493);
+            lblStatusPHP.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblStatusPHP.ForeColor = Color.Red;
+            lblStatusPHP.Location = new Point(481, 499);
             lblStatusPHP.Name = "lblStatusPHP";
-            lblStatusPHP.Size = new Size(87, 20);
+            lblStatusPHP.Size = new Size(121, 24);
             lblStatusPHP.TabIndex = 2;
             lblStatusPHP.Text = "Status PHP: ";
             // 
@@ -131,10 +141,10 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Fiserv_Logo_svg;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(12, 22);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(172, 73);
+            pictureBox1.Size = new Size(227, 113);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
@@ -143,21 +153,21 @@
             // 
             txtApachePath.Location = new Point(12, 254);
             txtApachePath.Name = "txtApachePath";
-            txtApachePath.Size = new Size(273, 27);
+            txtApachePath.Size = new Size(426, 27);
             txtApachePath.TabIndex = 10;
             // 
             // txtMySQLPath
             // 
             txtMySQLPath.Location = new Point(12, 403);
             txtMySQLPath.Name = "txtMySQLPath";
-            txtMySQLPath.Size = new Size(273, 27);
+            txtMySQLPath.Size = new Size(426, 27);
             txtMySQLPath.TabIndex = 11;
             // 
             // txtPHPPath
             // 
             txtPHPPath.Location = new Point(12, 522);
             txtPHPPath.Name = "txtPHPPath";
-            txtPHPPath.Size = new Size(273, 27);
+            txtPHPPath.Size = new Size(426, 27);
             txtPHPPath.TabIndex = 12;
             // 
             // label1
@@ -197,9 +207,41 @@
             label4.Text = "FISERV DEV TEAM FiservDevHost V.1.0  2024";
             label4.Click += label4_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(291, 179);
+            button1.Name = "button1";
+            button1.Size = new Size(147, 34);
+            button1.TabIndex = 17;
+            button1.Text = "Config Apache";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(291, 322);
+            button2.Name = "button2";
+            button2.Size = new Size(147, 34);
+            button2.TabIndex = 18;
+            button2.Text = "Admin Mysql";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(291, 456);
+            button3.Name = "button3";
+            button3.Size = new Size(147, 34);
+            button3.TabIndex = 19;
+            button3.Text = "Php ini";
+            button3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
-            ClientSize = new Size(753, 615);
+            ClientSize = new Size(770, 631);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -226,5 +268,8 @@
         }
 
         private Label label4;
+        private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }

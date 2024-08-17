@@ -56,7 +56,16 @@ namespace xampCaseiro
 
         private void btnStartMySQL_Click(object sender, EventArgs e)
         {
-            StartProcess("mysqld", "--console", txtMySQLPath.Text);
+            string mysqlPath = txtMySQLPath.Text;
+
+            if (string.IsNullOrEmpty(mysqlPath) || !System.IO.File.Exists(mysqlPath))
+            {
+                MessageBox.Show("O caminho do MySQL não é válido. Verifique e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string mysqlDirectory = System.IO.Path.GetDirectoryName(mysqlPath);
+            StartProcessMysql(mysqlDirectory, "mysqld", "--console");
             UpdateServiceStatus();
         }
 
@@ -65,6 +74,7 @@ namespace xampCaseiro
             StopProcess("mysqld");
             UpdateServiceStatus();
         }
+
 
         private void btnStartPHP_Click(object sender, EventArgs e)
         {
@@ -122,7 +132,55 @@ namespace xampCaseiro
             }
         }
 
+        private void StartProcessMysql(string? workingDirectory, string? fileName, string arguments = "")
+        {
+            if (string.IsNullOrEmpty(fileName))
+            {
+                MessageBox.Show("O nome do arquivo não pode ser nulo ou vazio.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(workingDirectory))
+            {
+                MessageBox.Show("O diretório de trabalho não pode ser nulo ou vazio.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = fileName,
+                    Arguments = arguments,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true,
+                    WorkingDirectory = workingDirectory // Define o diretório de trabalho
+                };
+
+                Process process = new Process { StartInfo = startInfo };
+                process.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao iniciar o processo: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }
